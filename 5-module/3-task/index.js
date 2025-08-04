@@ -5,7 +5,7 @@ function initCarousel() {
   const carInner =  document.querySelector(".carousel__inner");
   //console.dir(carInner);
   let curX = 0;
-  const countSlide = Math.trunc( carInner.scrollWidth / carInner.offsetWidth ) - 1;
+  const countSlide = carInner.children.length;
   //console.log( countSlide );
   let curSlide =0;
 
@@ -34,7 +34,7 @@ function initCarousel() {
   const btnRight = document.querySelector(".carousel__arrow_right");
   //console.dir(btnRight);
   btnRight.addEventListener('click', (event) => {
-    if( curSlide >= countSlide ){
+    if( curSlide >= (countSlide-1) ){
       return;
     }
     curX -= carInner.offsetWidth;
@@ -45,7 +45,7 @@ function initCarousel() {
     //carInner.scrollBy(-carInner.offsetWidth,0);
 
     curSlide ++;
-    if( curSlide >= countSlide ){
+    if( curSlide >= (countSlide-1) ){
       btnRight.style.display = 'none'
     }
     btnLeft.style.display = ''
